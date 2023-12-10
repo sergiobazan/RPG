@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Swashbuckle.AspNetCore.Filters;
 using Microsoft.OpenApi.Models;
+using RPG.Services.WeaponService;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -32,6 +33,7 @@ builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 // Dependecy Injection
 builder.Services.AddScoped<ICharacterService, CharacterService>();
+builder.Services.AddScoped<IWeaponService, WeaponService>();
 builder.Services.AddScoped<IAuthRepository, AuthRepository>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
   .AddJwtBearer(options => {
